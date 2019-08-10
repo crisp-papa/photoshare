@@ -3,5 +3,8 @@ from flask import render_template, flash
 
 @APP.route('/', methods=['GET'])
 def invite():
-    # flash('very interesting')
-    return render_template('invite.html')
+    flash('error', 'error')
+    flash('success!', 'success')
+    flash('warning!?', 'warning')
+    flash('just a message', 'message')
+    return render_template('shared/main.html')

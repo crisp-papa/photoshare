@@ -1,0 +1,9 @@
+* { box-sizing: border-box; }
+
+
+/* Categories for use with flask message flashing system */
+.success { color: green; }
+.error { color: red; }
+.warning { color: orange; }
+.message { color: turquoise; >}
+
