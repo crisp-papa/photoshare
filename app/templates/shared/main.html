@@ -1,9 +1,14 @@
 <html>
     <head>
         <title>photo share</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/pure-min.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/grids-responsive-min.css') }}"/>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}"/>
+
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
     </head>
     <body>
+        <h1>{% block page_title %}{% endblock %}</h1>
         <div class="message-container">
             {% include 'shared/messages.html' %}
         </div>

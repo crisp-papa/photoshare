@@ -9,3 +9,6 @@ body {
 .warning { color: orange; }
 .message { color: turquoise; }
 
+.pull-right { 
+    text-align: right; 
+}

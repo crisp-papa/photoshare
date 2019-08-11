@@ -1,4 +1,38 @@
 {% extends 'shared/main.html' %}
+{% block page_title %}Invite{% endblock %}
+
 {% block content %}
-    <h1>Invitation</h1>
+    <div class="invite-container">
+        <h2>Please choose a username and password:</h2>
+        <form class="pure-form pure-form-aligned" method="POST" id="submit">
+            <fieldset>
+                <div class="pure-control-group">
+                    <label class="">Username: </label>
+                    <input class="pure-u-lg-1-4" name="username" placeholder="Choose a username" type="text"/>
+                </div>
+                
+                <div class="pure-control-group">
+                    <label class="">Password:</label>
+                    <input class="pure-u-lg-1-4" name="password" placeholder="Choose a password" type="password"/>
+                </div>
+        
+                <div class="pure-control-group">
+                    <label class="">Confirm password:</label>
+                    <input class="pure-u-lg-1-4" name="password-confirm" placeholder="Confirm password" type="password"/>
+                </div>
+                <div class="pure-control-group">
+                    <label>
+                        
+                    </label>
+                    <button class="pure-button pure-button-primary">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+
+        <script>
+            document.getElementById('submit').addEventListener('submit', (event) => {
+                event.currentTarget.querySelector('button').disabled = true;
+            });
+        </script>
+    </div>
 {% endblock %}
