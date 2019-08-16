@@ -8,14 +8,13 @@
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
     </head>
     <body>
-        <h1>{% block page_title %}{% endblock %}</h1>
-        <div class="message-container">
-            {% include 'shared/messages.html' %}
-        </div>
+        <div class="login-container">{% include 'login.html' %}</div>
+        
         <div class="main-content-container">
+            <h1>{% block page_title %}{% endblock %}</h1>
+            <div class="message-container">{% include 'shared/messages.html' %}</div>
             {% block content %}{% endblock %}
         </div>
-        
         <script src="{{ url_for('static', filename='js/app.js') }}" async></script>
     </body>
 </html>

@@ -1,0 +1,12 @@
+{% if current_user.is_authenticated %}
+    <span class="welcome-message">Welcome back, {{ current_user.user_name }}!</span>
+    <a class="pure-button pure-button-primary" href="{{ url_for('logout') }}">Logout</a>
+{% else %}
+    <form class="pure-form" method="POST" id="login" action="{{ url_for('login')}}">
+        <fieldset>
+            <input class="" name="username" placeholder="Username" type="text"/ value="coolman420">
+            <input class="" name="password" placeholder="Password" type="password"/ value="coolman42069">
+            <button class="pure-button pure-button-primary">Submit</button>
+        </fieldset>
+    </form>
+{% endif %}

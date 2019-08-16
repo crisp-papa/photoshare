@@ -21,7 +21,26 @@ class PhotoshareDatabase(object):
 
         return None
 
-    def get_user(self, user_id):
+    def get_user(self, user):
+        result = self.client.photoshare.users.find_one({
+            'username': user['username'],
+            'password': user['password']
+        })
+
+        if result:
+            return result._id
+        
+        return 'User not found'
+
+    def get_user_by_name(self, username):
+        user = self.client.photoshare.users.find_one({'username': username})
+
+        if user:
+            return user
+        
+        return 'User not found'
+
+    def get_user_by_id(self, user_id):
         user = self.client.photoshare.users.find_one(ObjectId(user_id), projection={'_id': False})
         
         if user:
@@ -36,3 +55,4 @@ class PhotoshareDatabase(object):
             return True
 
         return False
+    

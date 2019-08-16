@@ -14,6 +14,7 @@ setup(
         'Flask==1.0.2',
         'requests==2.22.0',
         'py-bcrypt==0.4',
-        'pymongo==3.8.0'
+        'pymongo==3.8.0',
+        'Flask-Login==0.4.1'
     ]
 )
