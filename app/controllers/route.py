@@ -1,3 +1,4 @@
+from encodings import utf_8
 import bcrypt
 
 from app import APP
@@ -33,13 +34,13 @@ def invite():
         # Backend validation on passwords matching
         if (user['password'] == user['password-confirm']):
             # salt and hash password and then insert into db
-            tastyHash = bcrypt.hashpw(user['password'], bcrypt.gensalt(7))
-            postUser = {
+            hash = bcrypt.hashpw(user['password'], bcrypt.gensalt())
+            post_user = {
                 'username': user['username'],
-                'password': tastyHash
+                'password': hash
             }
 
-            psdb.create_user(postUser)
+            psdb.create_user(post_user)
             
     return render_template('invite.html')
 
@@ -50,8 +51,8 @@ def login():
     if (request.method == 'POST'):
         user = request.form.to_dict()
         db_user = psdb.get_user_by_name(user['username'])
-
-        if (bcrypt.checkpw(user['password'], db_user['password'])):
+        result = bcrypt.hashpw(user['password'].encode('utf8'), bcrypt.gensalt(7))
+        if (result):
             user = User(db_user)
             login_user(user)
             users[user.get_id()] = user
@@ -59,7 +60,7 @@ def login():
             flash('Welcome back!', 'success')
 
         else:
-            flash('Password incorrect, please try again', 'error')
+            flash('Username or password incorrect, please try again', 'error')
 
         return redirect(url_for('index'))
 

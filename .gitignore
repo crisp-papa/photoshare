@@ -15,3 +15,5 @@ build/
 
 setup-mongo
 *.DS_Store
+
+.vscode/
